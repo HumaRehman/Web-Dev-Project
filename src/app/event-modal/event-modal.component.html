@@ -1,0 +1,77 @@
+<div class="modal-dialog modal-fullscreen-sm-down">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">{{user}}</h4>
+            <span aria-hidden="true">&times;</span>
+            <!-- print name of the artist -->
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row-cols-lg-1">
+                    <div class="col-md-4">
+                        <div *ngFor="let item of artistEvents">
+                            
+                            <!--Grid column-->
+                            <div class="text-center">
+                                <mdb-card class = " hover-shadow" style="background:rgba(68, 156, 144, 0.692)">
+                                <br>
+                                    <mdb-card-body>
+                                        <!--Name-->
+                                        <mdb-card-title>
+                                            <div *ngIf="item.title; then title else notitle">
+                                            </div>
+                                            <!-- Calling tilee and if empty then print Event -->
+                                            <ng-template #title><h2>{{item.title}}</h2></ng-template>
+                                                <ng-template #notitle><h2>Event</h2></ng-template>
+                                        </mdb-card-title>
+                                            <hr>
+                                            <!-- Date and time and user -->
+                                            <h3>{{user}}</h3>
+                                            <div *ngIf="item.on_sale_datetime">
+                                                <h6 style = "font-style: italic;"><b>{{item.on_sale_datetime | slice:0:10}} at {{item.on_sale_datetime | slice:-8}}</b></h6>
+                                            </div>                
+                                            <!-- Location of the event -->
+                                            <div *ngIf="item.venue.country">
+                                                <hr>
+                                                <h4>Venue</h4>
+                                                <h5>Country: {{item.venue.country}}</h5>
+                                            </div>
+                                            <div *ngIf="item.venue.city">
+                                                <h5 style="text-justify: auto;">City: {{item.venue.city}}</h5>
+                                            </div>
+                                            <div *ngIf="item.venue.region">
+                                                <h5>Region: {{item.venue.region}}</h5>
+                                            </div>
+                                            
+                                            <div style="text-align: left; " *ngIf="item.venue.region">
+                                                <hr>
+                                                <h6 ><b>Line-up:</b></h6>
+                                                    <div *ngFor="let artist of item.lineup">
+                                                        <p>{{artist}}</p>
+                                                    </div>
+                                                
+                                            </div>
+                                            <!-- Description -->
+                                            <div style="text-align: left;">
+                                                <div *ngIf="item.description">
+                                                    <hr><h6 style="font-style: italic;">Description:{{item.description}}</h6>
+                                                </div>
+                                            </div>
+                                            <!-- URL -->
+                                            
+                                    </mdb-card-body>
+                                    
+                                </mdb-card>
+                                <!-- <div *ngIf="item.url">
+                                    <hr>
+                                    <a href="{{item.url}}" target="_blank">Learn more</a>  
+                                </div> -->
+                                <br><br>
+                        </div>
+                       
+                    </div>
+                    
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container text-center mx-auto">
+  <div *ngIf="item.name">
+      <!--Grid column-->
+            <div class="col-md-16">
+              <mdb-card class = "w-100 hover-shadow" style="background:rgba(68, 156, 144, 0.692)">
+                <br>
+                <!--Bacground color-->
+                  <div class="card-up gradient">
+                  </div>
+                  <!--Avatar-->
+                  <div class="img">
+                    <img src={{item.image_url}} width="99%" height="99%" class="rounded-circle img-fluid hover-shadow">
+                  </div>
+
+                  <mdb-card-body>
+                      <!--Name-->
+                      <mdb-card-title>
+                        <h2>{{item.name}}</h2>
+                      </mdb-card-title>
+                      <hr>
+                      <!--Quotation-->
+                      <p>Events: {{item.upcoming_event_count}}</p>
+                        <a href="{{item.facebook_page_url}}" target="_blank">
+                          <i class="fab  fa-facebook"></i>
+                        </a>
+                        <a href="{{item.url}}" target="_blank">
+                          <i class="fab fa-chrome"></i>
+                        </a>
+                      <br><br>
+                        <button type="button" mdbBtn style="background-color:rgb(66, 66, 66); color: white;"  (click)="openModal(item.name)" mdbWavesEffect>View Events</button>
+                  </mdb-card-body>
+              </mdb-card>
+            </div>
+            <!--Grid column-->
+            <br>
+  </div>  
+</div>

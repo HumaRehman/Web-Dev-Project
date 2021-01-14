@@ -1,0 +1,17 @@
+<div class="content container" role="main">
+  <div class="card">
+    <div class="form-group">
+      <br>
+      <input class=" form-control form-control-lg ml-6 w-80" type="Search Your Artist" [(ngModel)] ="searchText" placeholder="Search Your Artist" aria-label="Search">
+    </div>
+      <div class="row">
+        <ng-container  *ngFor="let item of artistList | filter:searchText">
+            <div class="col-md-4 col-sm-10">
+              <app-artist-item [item] = "item"></app-artist-item>
+            </div>
+            
+        </ng-container>
+                    
+      </div>
+  </div>
+</div>
